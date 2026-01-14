@@ -1,46 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>EPIGLOW – Face Scan</title>
-    <style>
-        body {
-          background: #0f0f0f;
-          color: white;
-          font-family: Arial;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-        }
-        .box {
-          text-align: center;
-          padding: 40px;
-          border-radius: 12px;
-          background: #1c1c1c;
-        }
-        button {
-          padding: 12px 30px;
-          background: purple;
-          border: none;
-          color: white;
-          font-size: 18px;
-          border-radius: 8px;
-          cursor: pointer;
-        }
-    </style>
+  <title>EPIGLOW – Personal Details</title>
+
+  <style>
+    body {
+      background: #0f0f0f;
+      color: white;
+      font-family: Arial;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #1c1c1c;
+      padding: 30px;
+      border-radius: 12px;
+      width: 320px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px;
+      width: 100%;
+      background: #7B2CBF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
-<div class="box">
-    <h1>✨ EPIGLOW AI FACE SCAN ✨</h1>
-    <p>Scan your face to detect skin type</p>
-    <button onclick="startScan()">Start Face Scan</button>
-</div>
 
-<script>
-    function startScan() {
+  <div class="card">
+    <h2>✨ EPIGLOW ✨</h2>
+    <p>Enter your personal details</p>
+
+    <input type="text" id="name" placeholder="Full Name" required>
+
+    <input type="number" id="age" placeholder="Age" required>
+
+    <select id="gender">
+      <option value="">Select Gender</option>
+      <option>Female</option>
+      <option>Male</option>
+      <option>Other</option>
+    </select>
+
+    <button onclick="saveDetails()">Continue to Face Scan</button>
+  </div>
+
+  <script>
+    function saveDetails() {
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const gender = document.getElementById("gender").value;
+
+      if (!name || !age || !gender) {
+        alert("Please fill all details");
+        return;
+      }
+
+      localStorage.setItem("epiglow_name", name);
+      localStorage.setItem("epiglow_age", age);
+      localStorage.setItem("epiglow_gender", gender);
+
       window.location.href = "scan.html";
     }
-</script>
+  </script>
+
 </body>
 </html>
