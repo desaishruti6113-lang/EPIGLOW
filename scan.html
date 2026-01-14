@@ -1,22 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>EPIGLOW – Scan Skin</title>
-    <link rel="stylesheet" href="css/style.css">
+  <title>EPIGLOW – AI Face Scan</title>
+
+  <style>
+    body {
+      background: #0f0f0f;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+      padding-top: 30px;
+    }
+
+    button {
+      padding: 14px 32px;
+      background: #7B2CBF;
+      border: none;
+      color: white;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .camera-box {
+      position: relative;
+      width: 320px;
+      height: 240px;
+      margin: auto;
+      display: none;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+    }
+
+    .scan-frame {
+      position: absolute;
+      inset: 0;
+      border: 3px solid #a855f7;
+      border-radius: 12px;
+    }
+
+    .scan-line {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background: #a855f7;
+      animation: scan 2s infinite linear;
+    }
+
+    @keyframes scan {
+      0% { top: 0; }
+      100% { top: 100%; }
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
 </head>
 
 <body>
-<div class="header">
-    <img src="images/logo.png" class="logo">
-    <h2>Scan Your Skin</h2>
-</div>
 
-<video id="video" autoplay></video>
-<canvas id="canvas" hidden></canvas>
+  <h1>✨ EPIGLOW AI FACE SCAN ✨</h1>
 
-<button onclick="capture()">Scan My Skin</button>
+  <button onclick="startCamera()">Scan My Skin</button>
 
-<script src="js/camera.js"></script>
+  <div class="camera-box" id="cameraBox">
+    <video id="video" autoplay playsinline></video>
+    <div class="scan-frame"></div>
+    <div class="scan-line"></div>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    const video = document.getElementById("video");
+    const cameraBox = document.getElementById("cameraBox");
+    const result = document.getElementById("result");
+
+    function startCamera() {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+          cameraBox.style.display = "block";
+          video.srcObject = stream;
+          result.innerHTML = "Scanning face...";
+          setTimeout(detectSkin, 4000);
+        })
+        .catch(error => {
+          alert("Camera permission denied or not supported.");
+          console.error(error);
+        });
+    }
+
+    function detectSkin() {
+      const types = ["dry", "oily", "acne"];
+      const detected = types[Math.floor(Math.random() * types.length)];
+
+      result.innerHTML = "Detected Skin Type: <b>" + detected.toUpperCase() + "</b>";
+
+      setTimeout(() => {
+        if (detected === "dry") location.href = "epiglow_dry.html";
+        else if (detected === "oily") location.href = "epiglow_oily.html";
+        else location.href = "epiglow_acne.html";
+      }, 2000);
+    }
+  </script>
+
 </body>
 </html>
+
+
 
