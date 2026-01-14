@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EPIGLOW – Recommended Products</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f0f0f;
+            color: white;
+        }
+
+        /* HEADER */
+        header {
+            background: #1c1c1c;
+            padding: 15px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* FILTER BAR */
+        .filters {
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+            overflow-x: auto;
+            background: #141414;
+        }
+
+        .filters button {
+            background: #2a2a2a;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .filters button:hover {
+            background: #7b2cbf;
+        }
+
+        /* LOADING */
+        #loader {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding: 12px;
+        }
+
+        /* PRODUCT CARD */
+        .card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 120px;
+            object-fit: contain;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .card h4 {
+            font-size: 14px;
+            margin: 8px 0 4px;
+        }
+
+        .card p {
+            font-size: 13px;
+            color: #bbb;
+        }
+
+        .card button {
+            background: #7b2cbf;
+            border: none;
+            color: white;
+            padding: 8px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>✨ EPIGLOW RECOMMENDS ✨</header>
+
+<!-- FILTERS -->
+<div class="filters">
+    <button onclick="filterBrand('all')">All</button>
+    <button onclick="filterBrand('cetaphil')">Cetaphil</button>
+    <button onclick="filterBrand('dotkey')">Dot & Key</button>
+    <button onclick="filterBrand('plum')">Plum</button>
+    <button onclick="filterBrand('dermaco')">Derma Co</button>
+    <button onclick="filterBrand('under500')">Under ₹500</button>
+</div>
+
+<!-- LOADING -->
+<div id="loader">Loading products...</div>
+
+<!-- PRODUCTS -->
+<div class="grid" id="productGrid" style="display:none">
+
+    <div class="card cetaphil under500">
+        <img src="cetaphil.png">
+        <h4>Cetaphil Moisturizer</h4>
+        <p>₹450</p>
+        <button onclick="openBuy('https://www.cetaphil.com')">Buy Now</button>
+    </div>
+
+    <div class="card dotkey under500">
+        <img src="dotandkey.png">
+        <h4>Dot & Key Barrier Cream</h4>
+        <p>₹395</p>
+        <button onclick="openBuy('https://www.dotandkey.com')">Buy Now</button>
+    </div>
+
+    <div class="card plum under500">
+        <img src="plum.png">
+        <h4>Plum Green Tea Moisturizer</h4>
+        <p>₹470</p>
+        <button onclick="openBuy('https://www.plumgoodness.com')">Buy Now</button>
+    </div>
+
+    <div class="card dermaco">
+        <img src="dermaco.png">
+        <h4>Derma Co Ceramide Cream</h4>
+        <p>₹550</p>
+        <button onclick="openBuy('https://thedermaco.com')">Buy Now</button>
+    </div>
+
+    <div class="card minimalist">
+        <img src="minimalist.png">
+        <h4>Minimalist Marula Oil</h4>
+        <p>₹599</p>
+        <button onclick="openBuy('https://beminimalist.co')">Buy Now</button>
+    </div>
+
+    <div class="card mamaearth">
+        <img src="mamaearth.png">
+        <h4>Mamaearth Vitamin C</h4>
+        <p>₹499</p>
+        <button onclick="openBuy('https://mamaearth.in')">Buy Now</button>
+    </div>
+
+</div>
+
+<script>
+    /* LOADING ANIMATION */
+    setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("productGrid").style.display = "grid";
+    }, 1500);
+
+    /* FILTER */
+    function filterBrand(type) {
+        let cards = document.getElementsByClassName("card");
+        for (let i = 0; i < cards.length; i++) {
+            cards[i].style.display =
+                type === "all" || cards[i].classList.contains(type)
+                ? "block" : "none";
+        }
+    }
+
+    /* BUY NOW */
+    function openBuy(url) {
+        window.location.href = url;
+    }
+</script>
+
+</body>
+</html>

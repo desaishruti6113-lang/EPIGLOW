@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EPIGLOW Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(135deg,#7b2cbf,#3a0ca3);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .card {
+            background: white;
+            color: black;
+            width: 320px;
+            padding: 25px;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .card img {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #7b2cbf;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        small {
+            display: block;
+            margin-top: 10px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <img src="logo.png">
+    <h2>EPIGLOW</h2>
+    <p>AI Skin Care Assistant</p>
+
+    <input type="text" id="name" placeholder="Enter your name">
+    <input type="email" id="email" placeholder="Enter your email">
+
+    <button onclick="login()">Login</button>
+
+    <small>No password required</small>
+</div>
+
+<script>
+    function login() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+
+        if(name === "" || email === ""){
+            alert("Please fill all details");
+            return;
+        }
+
+        // Save user info
+        localStorage.setItem("epiglowUser", name);
+
+        // Redirect to skin result page
+        window.location.href = "epiglow_dry.html";
+    }
+</script>
+
+</body>
+</html>
