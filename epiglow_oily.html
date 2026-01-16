@@ -1,187 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>EPIGLOW – Oily Skin Products</title>
+<meta charset="UTF-8">
+<title>EPIGLOW | Oily Skin</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0f0f0f;
-            color: white;
-        }
+<style>
+body {
+    margin: 0;
+    background: #000;
+    color: white;
+    font-family: Arial, sans-serif;
+}
 
-        /* HEADER */
-        header {
-            background: #1c1c1c;
-            padding: 15px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-        }
+/* HEADER */
+.top-header {
+    display: flex;
+    justify-content: center;
+    background: #111;
+    padding: 14px;
+}
 
-        /* FILTER BAR */
-        .filters {
-            display: flex;
-            gap: 10px;
-            padding: 10px;
-            background: #141414;
-            overflow-x: auto;
-        }
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+}
 
-        .filters button {
-            background: #2a2a2a;
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-        }
+.logo {
+    width: 45px;
+    height: 45px;
+}
 
-        .filters button:hover {
-            background: #00b4d8;
-        }
+/* TITLE */
+.page-title {
+    text-align: center;
+    margin: 20px;
+    font-size: 22px;
+}
 
-        /* LOADER */
-        #loader {
-            text-align: center;
-            padding: 40px;
-            font-size: 18px;
-        }
+/* ADVICE BUTTON */
+.advice-btn {
+    display: block;
+    width: 90%;
+    max-width: 320px;
+    margin: 10px auto 25px;
+    padding: 14px;
+    background: #7b2cff;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
 
-        /* GRID */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            padding: 12px;
-        }
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px;
+}
 
-        /* PRODUCT CARD */
-        .card {
-            background: #1a1a1a;
-            border-radius: 12px;
-            padding: 10px;
-            text-align: center;
-        }
+.card {
+    background: #111;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+}
 
-        .card img {
-            width: 100%;
-            height: 120px;
-            object-fit: contain;
-            background: white;
-            border-radius: 8px;
-        }
+.card img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    background: white;
+    border-radius: 8px;
+}
 
-        .card h4 {
-            font-size: 14px;
-            margin: 8px 0 4px;
-        }
+.card p {
+    margin: 10px 0 5px;
+}
 
-        .card p {
-            font-size: 13px;
-            color: #bbb;
-        }
-
-        .card button {
-            background: #00b4d8;
-            border: none;
-            color: white;
-            padding: 8px;
-            width: 100%;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-    </style>
+.card a {
+    display: block;
+    margin-top: 8px;
+    color: cyan;
+    text-decoration: none;
+}
+</style>
 </head>
 
 <body>
 
-<header>💧 EPIGLOW – OILY SKIN PICKS</header>
+<!-- HEADER -->
+<header class="top-header">
+    <a href="index.html" class="logo-link">
+        <img src="images/logo.png" class="logo">
+        <span>EPIGLOW</span>
+    </a>
+</header>
 
-<!-- FILTERS -->
-<div class="filters">
-    <button onclick="filterBrand('all')">All</button>
-    <button onclick="filterBrand('minimalist')">Minimalist</button>
-    <button onclick="filterBrand('plum')">Plum</button>
-    <button onclick="filterBrand('foxtale')">Foxtale</button>
-    <button onclick="filterBrand('dermaco')">Derma Co</button>
-    <button onclick="filterBrand('under500')">Under ₹500</button>
-</div>
+<!-- TITLE -->
+<h2 class="page-title">Oily Skin Product Recommendations</h2>
 
-<!-- LOADER -->
-<div id="loader">Loading oily skin products...</div>
+<!-- 🔥 ADVICE BUTTON (THIS IS THE OPTION YOU WANT) -->
+<a href="advice.html" class="advice-btn">
+    🌞🌙 Day & Night Skincare Advice
+</a>
 
 <!-- PRODUCTS -->
-<div class="grid" id="productGrid" style="display:none">
+<div class="grid">
 
-    <div class="card minimalist under500">
-        <img src="minimalist.png">
-        <h4>Minimalist Salicylic Acid Gel</h4>
-        <p>₹399</p>
-        <button onclick="openBuy('https://beminimalist.co')">Buy Now</button>
+    <div class="card">
+        <img src="images/plum.png">
+        <p>Plum Green Tea Moisturizer</p>
+        <a href="https://plumgoodness.com" target="_blank">Buy Now</a>
     </div>
 
-    <div class="card plum under500">
-        <img src="plum.png">
-        <h4>Plum Oil-Free Moisturizer</h4>
-        <p>₹470</p>
-        <button onclick="openBuy('https://www.plumgoodness.com')">Buy Now</button>
-    </div>
-
-    <div class="card foxtale under500">
-        <img src="foxtale.png">
-        <h4>Foxtale Matte Hydrator</h4>
-        <p>₹449</p>
-        <button onclick="openBuy('https://foxtale.in')">Buy Now</button>
-    </div>
-
-    <div class="card dermaco">
-        <img src="dermaco.png">
-        <h4>Derma Co Oil-Free Gel</h4>
-        <p>₹599</p>
-        <button onclick="openBuy('https://thedermaco.com')">Buy Now</button>
-    </div>
-
-    <div class="card mamaearth under500">
-        <img src="mamaearth.png">
-        <h4>Mamaearth Tea Tree Gel</h4>
-        <p>₹499</p>
-        <button onclick="openBuy('https://mamaearth.in')">Buy Now</button>
-    </div>
-
-    <div class="card dotkey under500">
-        <img src="dotandkey.png">
-        <h4>Dot & Key Oil Control Gel</h4>
-        <p>₹395</p>
-        <button onclick="openBuy('https://www.dotandkey.com')">Buy Now</button>
+    <div class="card">
+        <img src="images/foxtale.png">
+        <p>Foxtale Oil-Free Moisturizer</p>
+        <a href="https://foxtale.in" target="_blank">Buy Now</a>
     </div>
 
 </div>
-
-<script>
-    /* LOADING EFFECT */
-    setTimeout(() => {
-        document.getElementById("loader").style.display = "none";
-        document.getElementById("productGrid").style.display = "grid";
-    }, 1500);
-
-    /* FILTER */
-    function filterBrand(type) {
-        let cards = document.getElementsByClassName("card");
-        for (let i = 0; i < cards.length; i++) {
-            cards[i].style.display =
-                type === "all" || cards[i].classList.contains(type)
-                ? "block" : "none";
-        }
-    }
-
-    /* BUY */
-    function openBuy(url) {
-        window.location.href = url;
-    }
-</script>
 
 </body>
 </html>
