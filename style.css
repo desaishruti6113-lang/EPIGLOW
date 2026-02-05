@@ -59,5 +59,54 @@
   border-radius: 10px;
   padding: 10px;
 }
+/* Advice Page Styling */
+
+.advice-body {
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.advice-header {
+    text-align: center;
+    padding: 20px;
+}
+
+.advice-logo {
+    width: 120px;        /* SMALL LOGO */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.advice-header h1 {
+    color: #b56cff;
+    margin: 0;
+}
+
+.advice-content {
+    max-width: 700px;
+    margin: auto;
+    background: #111;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(181,108,255,0.3);
+}
+
+.advice-content h2 {
+    color: #ffcc70;
+    margin-top: 25px;
+}
+
+.advice-content ul {
+    padding-left: 20px;
+}
+
+.advice-content li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
 
 
